@@ -1,0 +1,19 @@
+#span-chip {
+  max-width: fit-content;
+  display: flex;
+  margin: 0 10px;
+  padding: 3px 15px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.chip {
+  background-color: #eceff1;
+}
+
+.span-active {
+  background-color: #bed8ea;  
+}

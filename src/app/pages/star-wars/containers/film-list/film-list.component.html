@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header row">
+    <div class="col"><h5>Star Wars Films</h5></div>
+    <div class="col">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div class="col button">
+          <button class="btn btn-outline-primary" type="button" (click)="ngOnInit()">Refresh</button>
+        </div>
+        <div class="col button">
+          <button class="btn btn-outline-primary" type="button" (click)="lastCharacters()">Last characters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body row">
+    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4" *ngFor="let item of listFilm.results">
+      <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title">Title: {{item.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Episode: {{item.episode_id}}</h6>
+          <p class="card-text">Director: {{item.director}}</p>
+          <a (click)="characters(item.characters)" class="card-link">Characters</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

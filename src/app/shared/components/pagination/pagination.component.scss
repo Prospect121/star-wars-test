@@ -1,0 +1,44 @@
+.paginator {
+	display: flex;
+	justify-content: flex-end;
+	padding: 14px 40px 14px 0;
+	border-radius: 0 0 8px 8px;
+	align-items: end;
+
+	.paginator-icon {
+		cursor: pointer;
+	}
+
+	&__page-size {
+		width: 70px;
+	}
+
+	&__icons {
+		display: flex;
+		align-items: center;
+	}
+
+	&__quantity-picker {
+		display: flex;
+		align-items: center;
+		margin-right: 70px;
+	}
+
+	&__picker-label {
+		margin-right: 8px;
+	}
+}
+
+span {
+    width: max-content;
+}
+
+@media (max-width: 390px){
+	.paginator {
+		justify-content: flex-start;
+
+		&__quantity-picker {
+			margin-right: 20px;
+		}
+	}
+}

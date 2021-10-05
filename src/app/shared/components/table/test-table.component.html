@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data">
+            <ng-container *ngTemplateOutlet="bodyTable && bodyTable.template; context: {$implicit: item}"></ng-container>
+        </tr>
+    </tbody>
+  </table>
+<pagination *ngIf="showPagination"
+    (goFirst)="goFirst.emit()" 
+    (goLast)="goLast.emit()" 
+    (goNext)="goNext.emit()" 
+    (goPrevious)="goPrevious.emit()"
+    (pageSize)="pageSize.emit($event)"
+    [quantities]="quantities"
+    [pagination]="pagination"
+    >
+</pagination>

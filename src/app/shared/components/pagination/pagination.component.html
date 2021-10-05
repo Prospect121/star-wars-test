@@ -1,0 +1,33 @@
+<div class="paginator">
+	<div class="paginator__quantity-picker">
+		<span class="paginator__picker-label">
+			<ng-content select="[filter-by-page-label]"></ng-content>
+		</span>
+		<div class="paginator__page-size">
+			<label for="inputState" class="form-label">State</label>
+			<select id="inputState" class="form-select" (change)="pageSize.emit(pageSizeSelect.value)" #pageSizeSelect>
+				<option [value]="quantity" *ngFor="let quantity of quantities">{{quantity}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="paginator__icons">
+		<span class="material-icons paginator-icon" (click)="goFirst.emit()">
+			first_page
+		</span>
+		<span class="material-icons paginator-icon" (click)="goPrevious.emit()">
+			chevron_left
+		</span>
+
+		<span>
+			{{pagination.first}} - {{pagination.last}} {{ofTranslation}} {{pagination.total}}
+		</span>
+
+		<span class="material-icons paginator-icon" (click)="goNext.emit()">
+			chevron_right
+		</span>
+		<span class="material-icons paginator-icon" (click)="goLast.emit()">
+			last_page
+		</span>
+	</div>
+</div>

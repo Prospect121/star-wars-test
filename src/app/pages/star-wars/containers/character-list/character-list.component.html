@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-header row">
+    <div class="col">
+      <h5>Star Wars Characters</h5>
+    </div>
+    <div class="col">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-outline-primary" (click)="back()">Back</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div>
+      <h3>Filters</h3>
+      <h5>Eyes</h5>
+      <div class="row chips">
+        <tr *ngFor="let item of uniqueEye">
+          <chips (onChange)="onChangeFilter($event, item)">
+            <span>{{item}}</span>
+          </chips>
+        </tr>
+      </div>
+      <h5>Genders</h5>
+      <div class="row chips">
+        <tr *ngFor="let item of uniqueGender;">
+          <chips (onChange)="onChangeFilter($event, item)">
+            <span>{{item}}</span>
+          </chips>
+        </tr>
+      </div>
+      <h5>Films</h5>
+      <div class="row chips">
+        <tr *ngFor="let item of uniqueFilm;">
+          <chips (onChange)="onChangeFilter($event, item)">
+            <span>{{item}}</span>
+          </chips>
+        </tr>
+      </div>
+    </div>
+    <div *ngIf="listDataCharacters.length > 0">
+      <test-table [headers]="headers" [data]="pageShow" [pagination]="pagination" [quantities]="quantities"
+        (pageSize)="onPaginationChange({pageSize:$event})" (goNext)="goNextPage()" (goPrevious)="goPreviousPage()"
+        (goLast)="goLast()" (goFirst)="goFirst()">
+        <ng-template testTableBody let-item>
+          <td>{{item.name}}</td>
+          <td>{{item.eye_color}}</td>
+          <td>{{item.gender}}</td>
+          <td id="films">
+            <span *ngFor="let film of item.name_films; let i=index">
+              <span *ngIf="item.name_films.length-1 != i; else end">{{film}}, </span>
+              <ng-template #end>
+                <span>{{film}}.</span>
+              </ng-template>
+            </span>
+          </td>
+        </ng-template>
+      </test-table>
+    </div>
+  </div>
+</div>

@@ -39,6 +39,9 @@ export class CharacterListComponent extends MasterList implements OnInit, OnDest
         this.starWarsStore.dispatch(fromRoot.spinner({isActive: true}));
         this.getCharcaters(data.StarWarsState.listCharacter);
       }
+      if(!data.StarWarsState.listCharacter){
+        this.back();
+      }
     });
     this.subscriptions.push(sub);
   }
